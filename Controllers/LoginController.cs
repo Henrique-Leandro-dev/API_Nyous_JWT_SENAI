@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Nyous.Contexts;
 using Nyous.Domains;
+using Nyous.Utils;
 
 namespace Nyous.Controllers
 {
@@ -75,6 +76,10 @@ namespace Nyous.Controllers
         [HttpPost]
         public IActionResult Login([FromBody] Usuario login)
         {
+
+            // Chamar o método de criptografia
+            // definição de salt: 4 primeiras leteras do e-mail 
+            login.Senha = Crypto.Criptografar(login.Senha, login.Email.Substring(0, 4));
             // Definimos logo de cara como não autorizado
             IActionResult response = Unauthorized();
 

@@ -17,7 +17,7 @@ namespace Nyous.Domains
         public string Email { get; set; }
         public string Senha { get; set; }
         public DateTime DataNascimento { get; set; }
-        public int? IdAcesso { get; set; }
+        public int IdAcesso { get; set; }
 
         public virtual Acesso IdAcessoNavigation { get; set; }
         public virtual ICollection<Convite> ConviteIdUsuarioConvidadoNavigation { get; set; }
